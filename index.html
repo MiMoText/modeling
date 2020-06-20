@@ -48,6 +48,7 @@ Christof Schöch und Maria Hinzmann,<br/>mit Beiträgen von Julia Röttgermann u
 1. Introduction to 'Mining and Modeling Text'
 2. Modeling Literary History
 3. Modeling Literary Historiography
+4. A network of information
 
 
 --
@@ -75,47 +76,62 @@ Christof Schöch und Maria Hinzmann,<br/>mit Beiträgen von Julia Röttgermann u
 
 
 ---
-### Teilprojekt: Literaturgeschichten
+### (1) Topic Modeling Novels
 
-* Ausgangspunkt: literaturhistorische Überblickswerke <!-- .element: class="fragment" data-fragment-index="1" -->
-* Identifikation von Sätzen, die Autoren und/oder Werke nennen <!-- .element: class="fragment" data-fragment-index="2" -->
-* Extraktion von bestimmten Aussagen über Autoren und Werke <!-- .element: class="fragment" data-fragment-index="3" -->
-* Ankoppeln der Aussagen an die Einträge der Bibliographie <!-- .element: class="fragment" data-fragment-index="4" -->
-
-
----
-### Teilprojekt: Romananalyse
-
-* Ausgangspunkt: Romankorpus (1750-1800)  <!-- .element: class="fragment" data-fragment-index="1" -->
-* Identifikation von litwiss. relevanten Eigenschaften: Handlungsorte, Topics, Dialoganteil uvm.  <!-- .element: class="fragment" data-fragment-index="2" -->
-* Ankoppeln der Eigenschaften an die Einträge der Bibliographie <!-- .element: class="fragment" data-fragment-index="3" -->
-* Abgleich / Evaluation  <!-- .element: class="fragment" data-fragment-index="4" -->  
+* Corpus design and text encoding <!-- .element: class="fragment" data-fragment-index="1" -->
+* Topic Modeling <!-- .element: class="fragment" data-fragment-index="2" -->
+* Modeling results as Linked Open Data <!-- .element: class="fragment" data-fragment-index="3" -->
 
 
 ---
-### LOD / Modellierung
+### Building a Corpus
 
-* Definition grundlegender Aussagetypen (Ontologie) <!-- .element: class="fragment" data-fragment-index="1" -->
-* Dienen als Suchschema für das Teilprojekt Literaturgeschichten <!-- .element: class="fragment" data-fragment-index="2" -->
-* Dokumentation der Ergebnisse aus Teilprojekt Romananalyse <!-- .element: class="fragment" data-fragment-index="3" -->
-
+* Aim: 200 volumes of novels (1750-1800)  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Sources: double keying, OCR, portals   <!-- .element: class="fragment" data-fragment-index="2" -->
+* Corpus composition: decades and narrative forms  <!-- .element: class="fragment" data-fragment-index="3" -->  
+* Current pilot corpus: ca. 80 volumes   <!-- .element: class="fragment" data-fragment-index="4" -->  
+* Text encoding: <!-- .element: class="fragment" data-fragment-index="5" -->
+    * XML-TEI encoding
+    * Modeled following the ELTeC schema
 
 
 ---
-### Pilotprojekt 
+### Topic Modeling
+<a href="img/tm_blei.png"><img height="500" src="img/tm_blei.png"></img></a>
 
-* 'Bibliographie du genre romanesque 1751-1800' (Mylne, Martin, Frautschi, 1977) als Linked Open Data <!-- .element: class="fragment" data-fragment-index="1" -->
-* Masterarbeit in den Digital Humanities (Andreas Lüschow) <!-- .element: class="fragment" data-fragment-index="2" -->
-* Digitalisierung, Modellierung, automatische Auszeichnung <!-- .element: class="fragment" data-fragment-index="3" -->
-* Ergebnis: die 'Bibliographie' als RDF-Datei <!-- .element: class="fragment" data-fragment-index="4" -->
 
+---
+### First results
+
+
+---
+### Modeling als LOD 
+
+* Candide HAS_TOPIC 't001_travel' (etc.)
+* Integration into the database of statements
 
 
 --
 <br/>
 <br/>
+## 2. Modeling Literary Historiography
 
-## Beispiel / Aussagetypen
+---
+<br/><br/>
+### (1) Extracting Statements
+
+* Define annotation layer with statement types
+* Manually annotate examples of statements
+* Learn to automatically identify instances
+
+
+---
+<br/><br/>
+### (2) Modeling Historiograohy 
+
+* Which types of statements are necessary?
+* What relations to these types have?
+* How do we create consensus?
 
 ---
 ### Aussagetypen
@@ -191,36 +207,23 @@ dreizehn Neuauflagen erlebte.</p>
 
 
 
-
 --
-## Fazit
+<br/><br/>
+## 3. A network of information
+
+
 
 ---
-### Projektergebnis
-<br/>
-<br/>
+### Bibliography and Novels
 
-* Literaturhistorisches Informationssystem auf LOD-Basis, mit SPARQL-Endpoint und Suchmaske <!-- .element: class="fragment" data-fragment-index="1" -->
-* Enthält auf unterschiedlichen Wegen gewonnenes Wissen über Literaturgeschichte <!-- .element: class="fragment" data-fragment-index="2" -->
-* Ziel: ein "Wikibase für die Literaturgeschichte" <!-- .element: class="fragment" data-fragment-index="3" -->
+* The *Bibliographie du genre romanesque* contains information on setting and theme/tone <!-- .element: class="fragment" data-fragment-index="1" -->
+* The *novel analysis* extracts place names and topics <!-- .element: class="fragment" data-fragment-index="2" -->
+* Relations <!-- .element: class="fragment" data-fragment-index="3" -->
+    * 
 
-
---
-## Rechtliche Perspektive 
-
----
-### Pilotprojekt (Bibliographie) 
-
-* Die Bibliographie ist 1977 erschienen; versammelt bibliographische Fakten, aber eventuell auch Interpretationen <!-- .element: class="fragment" data-fragment-index="1" -->
-* Fragen  <!-- .element: class="fragment" data-fragment-index="2" -->
-    * Darf die Bibliographie digitalisiert werden? 
-    * Darf darauf TDM angewandt werden?
-    * Dürfen die enthaltenen Informationen in das Wissensnetz einfließen?
-    * Darf die RDF-Version publiziert werden?   
 
 ---
 <a href="img/bgrf-Candide.png"><img height="500" src="img/bgrf-Candide.png"></img></a>
-
 <small>
 (Quelle: Martin, Frautschi, Mylne: Bibliographie<br/> du genre romanesque 1751-1800, 1977, S. 60)</small>
 
