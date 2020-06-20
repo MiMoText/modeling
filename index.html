@@ -52,13 +52,17 @@
 
 ---
 #### Willard McCarty, *Humanities Computing*, 2004
-<img height="400" data-src="img/mccarty.jpg">
+<img height="450" data-src="img/mccarty.jpg">
 
 "The residue of uniqueness"
 
 ---
 #### Jannidis & Flanders, *The Shape of Data in DH*, 2019
-<img height="500" data-src="img/flanders-jannidis.jpg">
+<img height="450" data-src="img/flanders-jannidis.jpg">
+
+---
+#### MiMoText: overview
+<a href="img/mimotext-overview.png"><img height="500" data-src="img/mimotext-overview.png"></a>
 
 
 --
@@ -121,92 +125,19 @@
 * What relations to these types have?
 * How do we create consensus?
 
----
-#### Aussagetypen
-* (Person) IS_CREATOR Werk (=DC) <!-- .element: class="fragment" data-fragment-index="1" -->
-* (Werk) HAS_SUBJECT Thema (=DC) <!-- .element: class="fragment" data-fragment-index="2" -->
-* (Person) INFLUENCED_BY Person (=WD) <!-- .element: class="fragment" data-fragment-index="3" -->
-* (Person) AWARD_RECEIVED (Name) (=WD) <!-- .element: class="fragment" data-fragment-index="4" -->
-* (Werk) HAS_GENRE (Gattung) (=WD) <!-- .element: class="fragment" data-fragment-index="5" -->
-* (Werk) HAS_CHARACTERS (Figurennamen) (=WD) <!-- .element: class="fragment" data-fragment-index="6" -->
-* (Werk) NARRATIVE_LOCATION (Ort) (=WD) <!-- .element: class="fragment" data-fragment-index="7" -->
-
-
----
-### Textbeispiel
-<br/>
-
->Candide ist das meistgelesene Werk Voltaires und war es wohl schon zu Lebzeiten des Autors. Als es 1759 in Genf erstmals im Druck erschien, wurde es zwar sofort verboten, aber doch nur mit dem Ergebnis, daß es im gleichen Jahr noch dreizehn Neuauflagen erlebte. (Erich Köhler, Aufklärung II, 1984)
-
----
-### Entities
-<br/>
-
-```
-
-<title type="work" ref="viaf:176620251 mmf:59ABCD">
-Candide</title> ist das meistgelesene Werk 
-<persName type="author" ref="viaf:36925746">Voltaires
-</persName> und war es wohl schon zu Lebzeiten des Autors. 
-
-Als <title type="work" ref="viaf:176620251 mmf:59ABCD">es
-</title> <date>1759</date> in <placeName type="city" 
-ref="tgn:7007279">Genf</placeName> erstmals im Druck 
-erschien, wurde es zwar sofort verboten, aber doch nur
-mit dem Ergebnis, daß es im gleichen Jahr noch 
-dreizehn Neuauflagen erlebte.</p>
-
-```
-
----
-### Aussagen (1)
-<br/>
-<br/>
-
-* Voltaire (viaf:36925746) IS_CREATOR_OF Candide (viaf:176620251) <!-- .element: class="fragment" data-fragment-index="1" -->
-* Candide (viaf:176620251) HAS_PUBLICATION_DATE 1759  <!-- .element: class="fragment" data-fragment-index="2" -->
-* Candide (viaf:176620251) HAS_PUBLICATION_LOCATION Genf (tgn:7007279)  <!-- .element: class="fragment" data-fragment-index="3" -->
-
----
-### Aussagen (2)
-<br/>
-<br/>
-
-* Candide (viaf:176620251) HAS_RECEPTION_INTENSITY high <!-- .element: class="fragment" data-fragment-index="1" -->
-* Candide (viaf:176620251) HAS_RECEPTION_TIME immediate;long-term <!-- .element: class="fragment" data-fragment-index="2" -->
-* Candide (viaf:176620251) HAS_LEGAL_STATUS censored <!-- .element: class="fragment" data-fragment-index="3" -->
-
-
----
-### Meta-Aussagen
-<br/>
-<br/>
-
-* {Voltaire (viaf:36925746) IS_CREATOR_OF Candide (viaf:176620251)} HAS_SOURCE Köhler_1984 <!-- .element: class="fragment" data-fragment-index="1" -->
-* {Candide (viaf:176620251) HAS_LEGAL_STATUS censored} HAS_TEMPORAL_SCOPE 1759-1765 <!-- .element: class="fragment" data-fragment-index="2" -->
-
----
-### Implizite Aussagen
-<br/>
-<br/>
-
-* Köhler_1984 HAS_SUBJECT Voltaire (viaf:36925746)
-* Köhler_1984 HAS_SUBJECT Candide (viaf:176620251) 
-* Köhler_1984 HAS_SUBJECT Genf (tgn:7007279)
 
 
 
 --
-<br/><br/>
-## 3. A network of information
+## (4) A network of information
 
 
 
 ---
 ### Bibliography and Novels
 
-* The *Bibliographie du genre romanesque* contains information on setting and theme/tone <!-- .element: class="fragment" data-fragment-index="1" -->
-* The *novel analysis* extracts place names and topics <!-- .element: class="fragment" data-fragment-index="2" -->
+* The 'Bibliographie du genre romanesque' contains information on setting and theme/tone <!-- .element: class="fragment" data-fragment-index="1" -->
+* The 'novel analysis' extracts place names and topics <!-- .element: class="fragment" data-fragment-index="2" -->
 * Relations <!-- .element: class="fragment" data-fragment-index="3" -->
     * 
 
