@@ -29,23 +29,24 @@
 <textarea data-template>
 
 # Modeling Literary History / Historiography
-<img height="80" data-src="img/basics/mimotext-logo.png">
+<img height="60" data-src="img/basics/mimotext-logo.png">
 <br/>
 <hr/>
-<p>Christof Schöch & Maria Hinzmann,<br/>with contributions from Julia Röttgermann, Katharina Dietz and Anne Klee</p>
+<p>Christof Schöch & Maria Hinzmann, with contributions from Julia Röttgermann, Katharina Dietz and Anne Klee</p>
+<p><a href="https://mimotext.github.io/modeling/">https://mimotext.github.io/modeling/</a></p>
+<br/>
 <p><strong><emph>Computational Modeling</emph> | Trier University | June 24, 2020</strong></p>
 <hr/>
-<br/>
-<img height="55" data-src="img/basics/tcdh-slim.png">&nbsp;&nbsp;&nbsp;<img height="55" data-src="img/basics/uni-trier.png">
+<img height="50" data-src="img/basics/tcdh-slim.png">&nbsp;&nbsp;&nbsp;<img height="50" data-src="img/basics/uni-trier.png">
 
 
 --
 ## Overview
-1. Modeling in Digital Humanities
-2. Introduction to 'Mining and Modeling Text'
-3. Modeling Literary History
-4. Modeling Literary Historiography
-5. A network of information
+1. [Modeling in Digital Humanities](#/2)
+2. [Introduction to 'Mining and Modeling Text'](#/3)
+3. [Modeling Literary History](#/4)
+4. [Modeling Literary Historiography](#/5)
+5. [A network of information](#/6)
 
 --
 ## (1) Modeling in Digital Humanities
@@ -56,7 +57,7 @@
 
 >"The residue of uniqueness"
 
->modeling as an iterative, knowledge-producing process
+>(modeling as an iterative, knowledge-producing process)
 
 ---
 #### Jannidis & Flanders, *The Shape of Data in DH*, 2019
@@ -69,7 +70,7 @@
 #### Computational Modeling in DH
 * Data Modeling <!-- .element: class="fragment" data-fragment-index="1" -->
   * Conceptual Modeling: entities and relations<br/>(taxonomies, ontologies, vocabularies) <!-- .element: class="fragment" data-fragment-index="2" -->
-  * Logical Modeling: data structures<br/>(e.g. in XML-TEI, RDF) <!-- .element: class="fragment" data-fragment-index="3" -->
+  * Logical Modeling: schemas / data structures<br/>(e.g. in XML-TEI, RDF) <!-- .element: class="fragment" data-fragment-index="3" -->
 * Statistical Modeling <!-- .element: class="fragment" data-fragment-index="4" -->
   * Detecting trends and patterns (e.g. Topic Modeling, Linear Regression, Keyness etc.)  <!-- .element: class="fragment" data-fragment-index="4" -->
 * Language Models <!-- .element: class="fragment" data-fragment-index="5" -->
@@ -95,6 +96,16 @@
 #### MiMoText: overview
 <a href="img/mimotext-overview.png"><img height="500" data-src="img/mimotext-overview.png"></a>
 
+* <a href="https://mimotext.uni-trier.de">https://mimotext.uni-trier.de</a>
+
+---
+#### Bibliographie du Genre romanesque: Candide
+<a href="img/bgrf-Candide.png"><img height="500" src="img/bgrf-Candide.png"></img></a>
+
+---
+#### Bibliographie modeled as RDF
+<a href="img/bgrf-Diderot-RDF.png"><img height="500" src="img/bgrf-Diderot-RDF.png"></img></a>
+
 
 --
 ## (3) Modeling Literary History
@@ -104,7 +115,7 @@
 
 
 ---
-### (A) Topic Modeling Novels
+### Topic Modeling Novels
 * Corpus design and text encoding <!-- .element: class="fragment" data-fragment-index="1" -->
 * Topic Modeling <!-- .element: class="fragment" data-fragment-index="2" -->
 * Modeling results as Linked Open Data <!-- .element: class="fragment" data-fragment-index="3" -->
@@ -132,16 +143,13 @@
 
 
 ---
-#### Modeling als LOD 
-* HAS_TOPIC (with threshold for inclusion and probability)
-    * Candide HAS_TOPIC 'philosophy' <!-- .element: class="fragment" data-fragment-index="1" -->
-    * {Candide HAS_TOPIC 'philosophy'} HAS_PROBABILITY 0.34 <!-- .element: class="fragment" data-fragment-index="1" -->
-* Integration into the database of statements <!-- .element: class="fragment" data-fragment-index="2" -->
-
-
----
-### (B) Named Entity Recognition
-
+#### Modeling as Linked Open Data (LOD) 
+* predicate MAIN_SUBJECT  <!-- .element: class="fragment" data-fragment-index="1" -->
+  * = Wikidata: P921 (cf. Dublin Core "Subject") <!-- .element: class="fragment" data-fragment-index="2" -->
+  * with threshold for inclusion and probability (and/or rank) <!-- .element: class="fragment" data-fragment-index="3" -->
+  * Candide MAIN_SUBJECT 'philosophy' <!-- .element: class="fragment" data-fragment-index="4" -->
+  * {Candide MAIN_SUBJECT 'philosophy'} PROBABILITY 0.34 <!-- .element: class="fragment" data-fragment-index="5" -->
+* Integration into the database of statements <!-- .element: class="fragment" data-fragment-index="6" -->
 
 
 --
@@ -153,45 +161,97 @@
 
 ---
 ### (A) Extracting Statements
-* Define annotation layer with statement types
-* Manually annotate examples of statements
-* Learn to automatically identify instances
-
----
-#### INCEPTION
+* Create training data by manual annotation (in INCePTION)
+* Train and apply Machine Learning (in Python)
 
 
 ---
-### (B) Modeling Historiograohy 
+#### Annotate subject-object layer
+<a href="img/inception_Candide-disambiguation.png"><img height="350" src="img/inception_Candide-disambiguation.png"></img></a>
+
+* here: named entities: authors, works
+* disambiguation of entities via Wikidata IDs
+
+
+---
+#### Annotate relation layer
+<a href="img/inception_Candide-relation.png"><img height="300" src="img/inception_Candide-relation.png"></img></a>
+
+* here: "author_of" relation (Wikidata: inverse of P50)
+* Statements/ LOD triples: 'author AUTHOR_OF work'
+* Training data: sentences +  statements
+
+---
+#### Machine Learning
+* Material: sentences automatically annotated for named entities <!-- .element: class="fragment" data-fragment-index="1" -->
+* Provide manual annotations of sentences (training and evaluation) <!-- .element: class="fragment" data-fragment-index="2" -->
+* Learn patterns / probabilities for features indicative of a relation <!-- .element: class="fragment" data-fragment-index="3" -->
+* Generate relation annotations for all sentences <!-- .element: class="fragment" data-fragment-index="4" -->
+
+
+
+---
+### (B) Modeling Historiography 
 * Which types of statements are necessary?
-* What relations to these types have?
-* How do we create consensus?
+* How do we create scholarly consensus?
 * Meta-perspective on disciplinary discourse
 
 
+---
+#### Extract from literary history
+
+>Candide is Voltaire's most widely read work and was probably already during the author's lifetime. When it first appeared in print in Geneva in 1759, it was immediately banned, but only with the result that it was reprinted thirteen times in the same year. (Erich Köhler, Aufklärung II, 1984; translation: DeepL)
+
+
+---
+#### Statements (1)
+* Voltaire (viaf:36925746) AUTHOR_OF Candide (viaf:176620251) <!-- .element: class="fragment" data-fragment-index="1" -->
+* Candide (viaf:176620251) PUBLICATION_DATE 1759  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Candide (viaf:176620251) PUBLICATION_LOCATION Geneva (tgn:7007279)  <!-- .element: class="fragment" data-fragment-index="3" -->
+* Candide (viaf:176620251) LEGAL_STATUS censored <!-- .element: class="fragment" data-fragment-index="4" -->
+
+---
+#### Statements (2)
+* Candide (viaf:176620251) RECEPTION_INTENSITY high <!-- .element: class="fragment" data-fragment-index="1" -->
+* Candide (viaf:176620251) RECEPTION_TIME immediate;long-term <!-- .element: class="fragment" data-fragment-index="2" -->
+* Candide (viaf:176620251) GENRE novel; satire; utopia <!-- .element: class="fragment" data-fragment-index="3" -->
+* Candide (viaf:176620251) NARRATIVE_LOCATION Lisbon; Eldorado; Constantinople <!-- .element: class="fragment" data-fragment-index="4" -->
+* Voltaire (viaf:176620251) INFLUENCED_BY Leibniz <!-- .element: class="fragment" data-fragment-index="5" -->
+
+---
+#### Special kinds of statements
+* Source:<br/>{Voltaire AUTHOR_OF Candide} SOURCE Köhler_1984<br/><br/>  <!-- .element: class="fragment" data-fragment-index="1" -->
+* Qualifier:<br/>{Candide LEGAL_STATUS censored} TEMPORAL_SCOPE 1759-1765<br/><br/>  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Implicit:<br/>Köhler_1984 MAIN_SUBJECT Voltaire; Candide; Geneva<br/><br/>  <!-- .element: class="fragment" data-fragment-index="3" -->
 
 
 --
 ## (5) A network of information
-
----
-#### Example entry: Candide
-<a href="img/bgrf-Candide.png"><img height="500" src="img/bgrf-Candide.png"></img></a>
-
-
----
-### Bibliography and Novels
-
-* The 'Bibliographie du genre romanesque' contains information on setting and theme/tone <!-- .element: class="fragment" data-fragment-index="1" -->
-* The 'novel analysis' extracts place names and topics <!-- .element: class="fragment" data-fragment-index="2" -->
-* Relations <!-- .element: class="fragment" data-fragment-index="3" -->
-    * 
 
 
 ---
 #### Bringing it all together
 <a href="img/network-of-information.png"><img height="500" src="img/network-of-information.png"></img></a>
 
+---
+### Thank you!<br/><br/>Questions or comments?
+
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+
+slides: https://mimotext.github.io/modeling/
+
+project: https://mimotext.uni-trier.de/
+
+
+--
+## Bonus slides
+
+---
+#### Wikidata query
+<a href="https://query.wikidata.org/#SELECT%20DISTINCT%20%3Fbook%20%3FbookLabel%0AWHERE%20%7B%0A%20%20%3Fbook%20wdt%3AP31%20wd%3AQ7725634%20%3B%20%20%23%20books%20that%20are%20literary%20works%0A%20%20%20%20%20%20%20%20wdt%3AP407%20wd%3AQ150%20%3B%20%20%20%20%20%20%23%20books%20written%20in%20French%0A%20%20%20%20%20%20%20%20wdt%3AP921%20wd%3AQ5891%3B%20%23main%20subject%3A%20philosophy%20%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%0A%20%20%20%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cfr%22%20.%0A%20%20%7D%0A%7D%20%0A"><img height="500" src="img/wikidata-query.png"></img></a>
 
 
 
